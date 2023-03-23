@@ -351,12 +351,14 @@ def push(data):
     docref.set(obj)
     print("push endline %s" %data )
 
-# def auth():
-#     cred = credentials.Certificate("snowfan-73-firebase-adminsdk-d8fdv-7a0de8e7f4.json")
-#     firebase_admin.initialize_app(cred)
-#     print("Auth Called")
+def auth():
 
-# auth()
+    if not firebase_admin._apps:
+        cred = credentials.Certificate("snowfan-73-firebase-adminsdk-d8fdv-7a0de8e7f4.json")
+        firebase_admin.initialize_app(cred)
+        print("Auth Called")
+
+auth()
 
 if __name__ == '__main__':
     opt = parse_opt()
