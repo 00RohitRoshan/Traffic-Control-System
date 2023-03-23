@@ -188,7 +188,7 @@ def detect(opt, stframe, car, bus, truck, motor, line, fps_rate,Text):
                     for j, (output, conf) in enumerate(zip(outputs, confs)):
 
                         Text.write(outputs)   # MyCode
-                        print(outputs)
+                        # print(outputs)
                         push(len(outputs))
                         # Text.write(len(outputs))
 
@@ -349,21 +349,21 @@ def push(data):
     docref = db.collection(u'Users').document(u'1')
     obj = {"NO" : data}
     docref.set(obj)
-    print("push endline %s" %data )
+    # print("push endline %s" %data )
 
 def auth():
 
     if not firebase_admin._apps:
         cred = credentials.Certificate("snowfan-73-firebase-adminsdk-d8fdv-7a0de8e7f4.json")
         firebase_admin.initialize_app(cred)
-        print("Auth Called")
+        # print("Auth Called")
 
 auth()
 
 if __name__ == '__main__':
     opt = parse_opt()
 
-    print(__name__)
+    # print(__name__)
 
     with torch.no_grad():
         detect(opt)
