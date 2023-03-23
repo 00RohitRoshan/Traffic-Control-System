@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#Authentication key
+snowfan-73-firebase-adminsdk-d8fdv-7a0de8e7f4.json
+runs/
