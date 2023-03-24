@@ -21,6 +21,8 @@ if __name__ == '__main__':
         with open(os.path.join('videos', video_file_buffer.name), 'wb') as f:
             f.write(video_file_buffer.getbuffer())
 
+    track_button = st.sidebar.button('START') ## Changed move before if trackbutton
+
     st.sidebar.markdown('---')
     st.sidebar.title('Settings')
 
@@ -68,12 +70,12 @@ if __name__ == '__main__':
 
     fps, _,  _, _  = st.columns(4)
     with fps:
-        st.markdown('**FPS**')
-        fps_text = st.markdown('__')
+        # st.markdown('**FPS**')
+        fps_text = st.markdown('  ')
 
-    Text = st.text("Text")
+    Text = st.text("Cordinates , id , cls")
 
-    track_button = st.sidebar.button('START')
+    
     # reset_button = st.sidebar.button('RESET ID')
     if track_button:
         
