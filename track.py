@@ -189,7 +189,7 @@ def detect(opt, stframe, car, bus, truck, motor, line, fps_rate,Text):
 
                         Text.write(outputs)   # MyCode
                         # print(outputs)
-                        push(len(outputs))
+                        # push(len(outputs))
                         # Text.write(len(outputs))
 
                         bboxes = output[0:4]
@@ -274,7 +274,7 @@ def detect(opt, stframe, car, bus, truck, motor, line, fps_rate,Text):
                 # bus.markdown(f"<h3> {str(len(data_bus))} </h3>", unsafe_allow_html=True).empty()
                 # truck.markdown(f"<h3> {str(len(data_truck))} </h3>", unsafe_allow_html=True).empty()
                 # motor.markdown(f"<h3> {str(len(data_motor))} </h3>", unsafe_allow_html=True).empty()
-                fps_rate.markdown(f"<h3> {fps_} </h3>", unsafe_allow_html=True)
+                # fps_rate.markdown(f"<h3> {fps_} </h3>", unsafe_allow_html=True)
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
     print("Average FPS", round(1 / (sum(list(t)) / 1000), 1))
