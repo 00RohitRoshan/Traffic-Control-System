@@ -13,6 +13,7 @@ sys.path.insert(0, './yolov5')
 import firebase_admin 
 from firebase_admin import credentials
 from firebase_admin import firestore
+from firebase import firebase
 # FireBase 
 
 import streamlit as st
@@ -344,11 +345,26 @@ def parse_opt():
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     return opt
 
+# firebaseConfig = {
+#   apiKey: "AIzaSyDUVXQojsz7JUEygELswZcCveO0KzTWvP8",
+#   authDomain: "snowfan-73.firebaseapp.com",
+#   databaseURL: "https://snowfan-73-default-rtdb.firebaseio.com",
+#   projectId: "snowfan-73",
+#   storageBucket: "snowfan-73.appspot.com",
+#   messagingSenderId: "350033453156",
+#   appId: "1:350033453156:web:58926019e2808ce96f7f71",
+#   measurementId: "G-WWKRGV0E73"
+# }
+
+# firebase = pyrbase.initialize_app(firebaseConfig)
+# db = firebase.database()
+
 def push(data):
-    db = firestore.client()
-    docref = db.collection(u'Users').document(u'1')
-    obj = {"NO" : data}
-    docref.set(obj)
+    firebase = firebase.FirebaseApplication("https://snowfan-73-default-rtdb.firebaseio.com/", None)
+    obj =  { 'int1': data}
+    firebase.post('ln1',obj)
+    # result = firebase.post('/python-example-f6d0b/Students/',obj)
+    # print(result)
     # print("push endline %s" %data )
 
 def auth():
