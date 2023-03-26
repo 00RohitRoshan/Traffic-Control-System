@@ -18,6 +18,7 @@ I run this project on Python 3.9.7
 ```python
 pip install -r requirements.txt
 ```
+💡Quick Tip : If you get dependecies errors while installing packages. Try removing the <==version> from the requirements.txt file.
 
 * Run demo:
 ```python
