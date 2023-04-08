@@ -9,11 +9,11 @@ os.environ["NUMEXPR_NUM_THREADS"] = "1"
 import sys
 sys.path.insert(0, './yolov5')
 
-# FireBase 
-import firebase_admin 
-from firebase_admin import credentials
-from firebase_admin import firestore
-from firebase import firebase
+# # FireBase 
+# import firebase_admin 
+# from firebase_admin import credentials
+# from firebase_admin import firestore
+from firebase import firebase as firebase
 # FireBase 
 
 import streamlit as st
@@ -190,7 +190,7 @@ def detect(opt, stframe, car, bus, truck, motor, line, fps_rate,Text):
 
                         Text.write(outputs)   # MyCode
                         # print(outputs)
-                        # push(len(outputs))
+                        push(len(outputs))
                         # Text.write(len(outputs))
 
                         bboxes = output[0:4]
@@ -345,36 +345,24 @@ def parse_opt():
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     return opt
 
-# firebaseConfig = {
-#   apiKey: "AIzaSyDUVXQojsz7JUEygELswZcCveO0KzTWvP8",
-#   authDomain: "snowfan-73.firebaseapp.com",
-#   databaseURL: "https://snowfan-73-default-rtdb.firebaseio.com",
-#   projectId: "snowfan-73",
-#   storageBucket: "snowfan-73.appspot.com",
-#   messagingSenderId: "350033453156",
-#   appId: "1:350033453156:web:58926019e2808ce96f7f71",
-#   measurementId: "G-WWKRGV0E73"
-# }
-
-# firebase = pyrbase.initialize_app(firebaseConfig)
-# db = firebase.database()
-
 def push(data):
-    firebase = firebase.FirebaseApplication("https://snowfan-73-default-rtdb.firebaseio.com/", None)
-    obj =  { 'int1': data}
-    firebase.post('ln1',obj)
-    # result = firebase.post('/python-example-f6d0b/Students/',obj)
-    # print(result)
+    Firebase = firebase.FirebaseApplication("https://snowfan-73-default-rtdb.firebaseio.com",None)
+    # db = firestore.client()
+    # docref = db.collection(u'Users').document(u'1')
+    # obj = {"NO" : data}
+    # docref.set(obj)
     # print("push endline %s" %data )
+    result = Firebase.put('/ln2',"NO", data)
+    print("push endline %s" %data)
 
-def auth():
+# def auth():
 
-    if not firebase_admin._apps:
-        cred = credentials.Certificate("snowfan-73-firebase-adminsdk-d8fdv-7a0de8e7f4.json")
-        firebase_admin.initialize_app(cred)
-        # print("Auth Called")
+#     if not firebase_admin._apps:
+#         cred = credentials.Certificate("snowfan-73-firebase-adminsdk-d8fdv-7a0de8e7f4.json")
+#         firebase_admin.initialize_app(cred)
+#         # print("Auth Called")
 
-auth()
+# auth()
 
 if __name__ == '__main__':
     opt = parse_opt()
